@@ -1,252 +1,256 @@
-import React, { useState, useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Impulsa tu presencia online con Diseño Web a medida y Estrategias SEO de vanguardia. En Tu Negocio Digital, transformamos tu visión en resultados tangibles, atrayendo más clientes y elevando tu marca en Google.">
+  <meta name="keywords" content="diseño web profesional, posicionamiento SEO, marketing digital, desarrollo web, optimización SEO, visibilidad online, agencia SEO, expertos web, creación de páginas web, marketing online">
+  <meta name="author" content="Tu Nombre">
+  <title>Tu Negocio Digital: Diseño Web Profesional y Posicionamiento SEO Experto</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.5rem; /* rounded-lg */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.7s ease-in-out;
+    }
+    .carousel-track img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      height: 24rem; /* h-96 */
+    }
+    .carousel-dots {
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .carousel-dot {
+      width: 0.75rem; /* w-3 */
+      height: 0.75rem; /* h-3 */
+      border-radius: 9999px; /* rounded-full */
+      background-color: rgba(156, 163, 175, 0.8); /* bg-gray-400 with transparency */
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .carousel-dot.active {
+      background-color: white;
+    }
+    /* Añadir transiciones a las secciones de contenido */
+    section {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-100 text-gray-800">
 
-// Componente del Carrusel
-const Carousel = () => {
-  const images = [
-    'https://placehold.co/1200x400/FF5733/ffffff?text=Diseño+Web+Creativo',
-    'https://placehold.co/1200x400/33FF57/ffffff?text=SEO+Avanzado',
-    'https://placehold.co/1200x400/3357FF/ffffff?text=Marketing+Digital+Integral',
-    'https://placehold.co/1200x400/FF33CC/ffffff?text=Tu+Éxito+Online'
-  ];
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    // Configura el carrusel para que cambie automáticamente cada 3 segundos
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    // Limpia el intervalo cuando el componente se desmonta
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  return (
-    <section className="relative w-full overflow-hidden rounded-lg shadow-xl mb-12">
-      <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {images.map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Imagen ${index + 1} del carrusel`}
-            className="w-full flex-shrink-0 object-cover h-96"
-          />
-        ))}
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white p-4 shadow-lg rounded-b-lg">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center mb-4 md:mb-0">
+        <!-- Logo con un diseño moderno (SVG simple) -->
+        <div class="bg-white p-2 rounded-full mr-3 shadow-md">
+          <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm4 0a1 1 0 100-2 1 1 0 000 2zm-3 7a1 1 0 01-1-1 3 3 0 016 0 1 1 0 01-1 1H8z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-tight">Tu Negocio Digital</h1>
       </div>
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full ${
-              currentIndex === index ? 'bg-white' : 'bg-gray-400'
-            }`}
-            aria-label={`Ir a la imagen ${index + 1}`}
-          ></button>
-        ))}
+      <nav>
+        <ul class="flex flex-wrap justify-center md:space-x-6 space-x-3 text-lg font-medium">
+          <li><a href="#servicios" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Servicios</a></li>
+          <li><a href="#sobre-nosotros" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Sobre Nosotros</a></li>
+          <li><a href="#contacto" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Contacto</a></li>
+          <li><a href="#blog" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Blog</a></li>
+          <li><a href="#casos-exito" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Casos de Éxito</a></li>
+          <li><a href="#testimonios" class="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md">Testimonios</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4 md:p-8">
+    <!-- Carrusel de Imágenes -->
+    <section class="carousel-container mb-12">
+      <div class="carousel-track" id="carousel-track">
+        <img src="https://placehold.co/1200x400/FF5733/ffffff?text=Diseño+Web+Creativo" alt="Diseño Web Creativo">
+        <img src="https://placehold.co/1200x400/33FF57/ffffff?text=SEO+Avanzado" alt="SEO Avanzado">
+        <img src="https://placehold.co/1200x400/3357FF/ffffff?text=Marketing+Digital+Integral" alt="Marketing Digital Integral">
+        <img src="https://placehold.co/1200x400/FF33CC/ffffff?text=Tu+Éxito+Online" alt="Tu Éxito Online">
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </section>
+
+    <!-- Bloques de Contenido Principal (con SEO) -->
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+      <div class="md:w-1/2">
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-4">Servicios de Marketing Digital</h2>
+        <p class="text-lg leading-relaxed text-gray-700">Ofrecemos soluciones completas de <strong>diseño web</strong> profesional y <strong>posicionamiento SEO</strong> para que tu negocio destaque en Google. Desde sitios web adaptables y estéticos hasta auditorías técnicas y estrategias de contenido, garantizamos una presencia online robusta y atractiva. Con un enfoque en la experiencia de usuario y la optimización para motores de búsqueda, transformamos visitantes en clientes.</p>
+        <ul class="list-disc list-inside text-lg text-gray-600 mt-4 space-y-2">
+          <li>Diseño de sitios web responsive y visualmente impactantes</li>
+          <li>Optimización SEO On-Page y Off-Page para máxima visibilidad</li>
+          <li>Auditorías SEO técnicas profundas y personalizadas</li>
+          <li>Estrategias de contenidos que atraen y convierten</li>
+        </ul>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://placehold.co/600x400/FFD700/000000?text=Servicios+Digitales" alt="Servicios de Marketing Digital" class="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full">
       </div>
     </section>
-  );
-};
 
-// Componente del encabezado
-const Header = () => {
-  const navItems = [
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Sobre Nosotros', href: '#sobre-nosotros' },
-    { name: 'Contacto', href: '#contacto' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Casos de Éxito', href: '#casos-exito' },
-    { name: 'Testimonios', href: '#testimonios' },
-  ];
-
-  return (
-    <header className="bg-gradient-to-r from-blue-600 to-purple-700 text-white p-4 shadow-lg rounded-b-lg">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="flex items-center mb-4 md:mb-0">
-          {/* Logo con un diseño moderno */}
-          <div className="bg-white p-2 rounded-full mr-3 shadow-md">
-            <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm4 0a1 1 0 100-2 1 1 0 000 2zm-3 7a1 1 0 01-1-1 3 3 0 016 0 1 1 0 01-1 1H8z" clipRule="evenodd"></path>
-            </svg>
-          </div>
-          <h1 className="text-3xl font-extrabold tracking-tight">Tu Negocio Digital</h1>
-        </div>
-        <nav>
-          <ul className="flex flex-wrap justify-center md:space-x-6 space-x-3 text-lg font-medium">
-            {navItems.map((item) => (
-              <li key={item.name} className="mb-2 md:mb-0">
-                <a
-                  href={item.href}
-                  className="hover:text-blue-200 transition duration-300 ease-in-out transform hover:scale-105 px-3 py-2 rounded-md"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <!-- Sección Sobre Nosotros -->
+    <section id="sobre-nosotros" class="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row-reverse items-center space-y-6 md:space-y-0 md:space-x-8">
+      <div class="md:w-1/2">
+        <h2 class="text-4xl font-extrabold text-purple-700 mb-4">¿Quiénes Somos? Tu Socio Estratégico en Línea</h2>
+        <p class="text-lg leading-relaxed text-gray-700">Somos un equipo de expertos apasionados en desarrollo web y estrategias SEO, con más de 10 años ayudando a empresas a crecer exponencialmente en línea. Nuestra misión es construir no solo páginas web, sino plataformas que impulsen el crecimiento y la visibilidad de tu marca. Con un enfoque en la innovación y la adaptación constante a los algoritmos de Google, somos el aliado que necesitas para dominar el entorno digital.</p>
       </div>
-    </header>
-  );
-};
-
-// Componente del pie de página
-const Footer = () => {
-  const navItems = [
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Sobre Nosotros', href: '#sobre-nosotros' },
-    { name: 'Contacto', href: '#contacto' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Casos de Éxito', href: '#casos-exito' },
-    { name: 'Testimonios', href: '#testimonios' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Recursos', href: '#recursos' },
-  ];
-
-  return (
-    <footer className="bg-gray-900 text-gray-300 p-8 mt-12 rounded-t-lg shadow-inner">
-      <div className="container mx-auto text-center">
-        <p className="mb-4 text-sm">&copy; 2025 TuNegocioDigital. Todos los derechos reservados.</p>
-        <nav className="mb-6">
-          <ul className="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sm">
-            {navItems.map((item) => (
-              <li key={item.name} className="mb-2 md:mb-0">
-                <a
-                  href={item.href}
-                  className="hover:text-white transition duration-300 ease-in-out"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="flex justify-center space-x-6 mt-4">
-          {/* Iconos de redes sociales (placeholders) */}
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.37-.83.5-1.75.85-2.72 1.05C18.3 4.2 17.22 3.5 16 3.5c-2.34 0-4.24 1.9-4.24 4.24 0 .33.04.65.11.96C8.07 9.17 5.06 7.5 3.09 4.88c-.34.58-.54 1.25-.54 1.98 0 1.38.7 2.6 1.77 3.32-.66-.02-1.28-.2-1.82-.5V12c0 2.07 1.48 3.79 3.44 4.18-.36.1-.73.15-1.12.15-.27 0-.53-.02-.79-.08.55 1.7 2.14 2.93 4.02 2.96C13.44 18.2 15 19 16.7 19c1.7 0 3.12-.9 3.89-2.28.16.02.33.04.5.04.49 0 .97-.07 1.43-.2-.59.47-1.36.85-2.18 1.07z"></path></svg>
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14H8V10h2v6zm4 0h-2V10h2v6zm-2-7c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-8 19H7v-7h4v7zm6 0h-4v-7h4v7zm-8-9H7V7h4v3zm6 0h-4V7h4v3z"></path></svg>
-          </a>
-        </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://placehold.co/600x400/98FB98/000000?text=Nuestro+Equipo" alt="Nuestro equipo de trabajo" class="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full">
       </div>
-    </footer>
-  );
-};
+    </section>
 
-// Componente principal de la aplicación
-const App = () => {
-  const seoText = {
-    title: "Tu Negocio Digital: Diseño Web Profesional y Posicionamiento SEO Experto",
-    description: "Impulsa tu presencia online con Diseño Web a medida y Estrategias SEO de vanguardia. En Tu Negocio Digital, transformamos tu visión en resultados tangibles, atrayendo más clientes y elevando tu marca en Google.",
-    keywords: "diseño web profesional, posicionamiento SEO, marketing digital, desarrollo web, optimización SEO, visibilidad online, agencia SEO, expertos web",
-    blocks: {
-      servicios: {
-        title: "Servicios de Marketing Digital",
-        text: "Ofrecemos soluciones completas de <strong>diseño web</strong> profesional y <strong>posicionamiento SEO</strong> para que tu negocio destaque en Google. Desde sitios web adaptables y estéticos hasta auditorías técnicas y estrategias de contenido, garantizamos una presencia online robusta y atractiva. Con un enfoque en la experiencia de usuario y la optimización para motores de búsqueda, transformamos visitantes en clientes.",
-        image: "https://placehold.co/600x400/FFD700/000000?text=Servicios+Digitales"
-      },
-      sobreNosotros: {
-        title: "¿Quiénes Somos? Tu Socio Estratégico en Línea",
-        text: "Somos un equipo de expertos apasionados en desarrollo web y estrategias SEO, con más de 10 años ayudando a empresas a crecer exponencialmente en línea. Nuestra misión es construir no solo páginas web, sino plataformas que impulsen el crecimiento y la visibilidad de tu marca. Con un enfoque en la innovación y la adaptación constante a los algoritmos de Google, somos el aliado que necesitas para dominar el entorno digital.",
-        image: "https://placehold.co/600x400/98FB98/000000?text=Nuestro+Equipo"
-      },
-      porqueElegirnos: {
-        title: "Por Qué Elegirnos: Resultados Comprobados y Enfoque Personalizado",
-        text: "Elegirnos significa optar por la excelencia y la personalización. Nos distinguimos por nuestra capacidad de entregar resultados medibles, un servicio al cliente excepcional y una adaptación constante a las últimas tendencias del marketing digital. Cada proyecto es una oportunidad para superar expectativas y crear soluciones únicas que resuenen con tu audiencia y dominen el mercado.",
-        image: "https://placehold.co/600x400/ADD8E6/000000?text=Resultados+Garantizados"
-      },
-      contacto: {
-        title: "Contacto: ¡Hagamos Crecer Tu Negocio Juntos!",
-        text: "¿Listo para transformar tu presencia en línea y alcanzar nuevas alturas? No esperes más. <a href='mailto:info@tunegocio.com' class='text-blue-400 hover:underline'>Contáctanos hoy mismo</a> y comienza tu camino hacia el éxito digital. Nuestro equipo está listo para escuchar tus ideas y convertirlas en una realidad impactante.",
-        image: "https://placehold.co/600x400/FFC0CB/000000?text=Contacta+Ahora"
-      }
-    }
-  };
+    <!-- Sección Por Qué Elegirnos -->
+    <section id="porque-elegirnos" class="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+      <div class="md:w-1/2">
+        <h2 class="text-4xl font-extrabold text-green-700 mb-4">Por Qué Elegirnos: Resultados Comprobados y Enfoque Personalizado</h2>
+        <p class="text-lg leading-relaxed text-gray-700">Elegirnos significa optar por la excelencia y la personalización. Nos distinguimos por nuestra capacidad de entregar resultados medibles, un servicio al cliente excepcional y una adaptación constante a las últimas tendencias del marketing digital. Cada proyecto es una oportunidad para superar expectativas y crear soluciones únicas que resuenen con tu audiencia y dominen el mercado.</p>
+        <ul class="list-disc list-inside text-lg text-gray-600 mt-4 space-y-2">
+          <li>Estrategias personalizadas para tu nicho de mercado.</li>
+          <li>Expertos certificados con experiencia probada.</li>
+          <li>Informes transparentes y seguimiento constante.</li>
+          <li>Soporte técnico y asesoramiento continuo.</li>
+        </ul>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://placehold.co/600x400/ADD8E6/000000?text=Resultados+Garantizados" alt="Resultados comprobados" class="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full">
+      </div>
+    </section>
 
-  // El script de Tailwind CSS y la manipulación de meta tags
-  // deben hacerse en el archivo HTML principal o mediante librerías de SEO para React.
-  // Se eliminan de aquí para evitar errores en este entorno autocontenido.
+    <!-- Sección Contacto -->
+    <section id="contacto" class="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row-reverse items-center space-y-6 md:space-y-0 md:space-x-8">
+      <div class="md:w-1/2">
+        <h2 class="text-4xl font-extrabold text-red-700 mb-4">Contacto: ¡Hagamos Crecer Tu Negocio Juntos!</h2>
+        <p class="text-lg leading-relaxed text-gray-700">¿Listo para transformar tu presencia en línea y alcanzar nuevas alturas? No esperes más. <a href="mailto:info@tunegocio.com" class="text-blue-600 hover:underline font-bold">Contáctanos hoy mismo</a> y comienza tu camino hacia el éxito digital. Nuestro equipo está listo para escuchar tus ideas y convertirlas en una realidad impactante.</p>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://placehold.co/600x400/FFC0CB/000000?text=Contacta+Ahora" alt="Formulario de contacto" class="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full">
+      </div>
+    </section>
 
-  return (
-    <div className="font-sans antialiased bg-gray-100 text-gray-800">
-      <Header />
-      <main className="container mx-auto p-4 md:p-8">
-        <Carousel />
+    <!-- Otras secciones del HTML original (sin contenido extendido) -->
+    <section id="blog" class="bg-white p-6 rounded-lg shadow-md mb-6"><h2 class="text-3xl font-bold text-gray-800 mb-3">Blog</h2><p class="text-lg text-gray-600">Lee nuestros artículos sobre las últimas tendencias en diseño web y SEO.</p><a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Visita nuestro blog</a></section>
+    <section id="casos-exito" class="bg-white p-6 rounded-lg shadow-md mb-6"><h2 class="text-3xl font-bold text-gray-800 mb-3">Casos de Éxito</h2><p class="text-lg text-gray-600">Descubre cómo hemos ayudado a otros negocios a mejorar su posicionamiento en línea.</p><a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver casos de éxito</a></section>
+    <section id="testimonios" class="bg-white p-6 rounded-lg shadow-md mb-6"><h2 class="text-3xl font-bold text-gray-800 mb-3">Testimonios</h2><p class="text-lg text-gray-600">Lo que nuestros clientes dicen sobre nosotros.</p><a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Leer testimonios</a></section>
+    <section id="faq" class="bg-white p-6 rounded-lg shadow-md mb-6"><h2 class="text-3xl font-bold text-gray-800 mb-3">Preguntas Frecuentes</h2><p class="text-lg text-gray-600">Resolvemos tus dudas sobre nuestros servicios.</p><a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver preguntas frecuentes</a></section>
+    <section id="recursos" class="bg-white p-6 rounded-lg shadow-md mb-6"><h2 class="text-3xl font-bold text-gray-800 mb-3">Recursos</h2><p class="text-lg text-gray-600">Accede a guías, plantillas y herramientas útiles para mejorar tu presencia en línea.</p><a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Explorar recursos</a></section>
 
-        {/* Sección de Servicios */}
-        <section id="servicios" className="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 transform transition duration-500 hover:scale-[1.01]">
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-extrabold text-blue-700 mb-4">{seoText.blocks.servicios.title}</h2>
-            <p className="text-lg leading-relaxed text-gray-700" dangerouslySetInnerHTML={{ __html: seoText.blocks.servicios.text }}></p>
-            <ul className="list-disc list-inside text-lg text-gray-600 mt-4 space-y-2">
-              <li>Diseño de sitios web responsive y visualmente impactantes</li>
-              <li>Optimización SEO On-Page y Off-Page para máxima visibilidad</li>
-              <li>Auditorías SEO técnicas profundas y personalizadas</li>
-              <li>Estrategias de contenidos que atraen y convierten</li>
-            </ul>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={seoText.blocks.servicios.image} alt="Servicios de Marketing Digital" className="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full" />
-          </div>
-        </section>
+  </main>
 
-        {/* Sección Sobre Nosotros */}
-        <section id="sobre-nosotros" className="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row-reverse items-center space-y-6 md:space-y-0 md:space-x-8 transform transition duration-500 hover:scale-[1.01]">
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-extrabold text-purple-700 mb-4">{seoText.blocks.sobreNosotros.title}</h2>
-            <p className="text-lg leading-relaxed text-gray-700" dangerouslySetInnerHTML={{ __html: seoText.blocks.sobreNosotros.text }}></p>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={seoText.blocks.sobreNosotros.image} alt="Nuestro equipo de trabajo" className="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full" />
-          </div>
-        </section>
-
-        {/* Sección Por Qué Elegirnos (nuevo bloque) */}
-        <section id="porque-elegirnos" className="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 transform transition duration-500 hover:scale-[1.01]">
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-extrabold text-green-700 mb-4">{seoText.blocks.porqueElegirnos.title}</h2>
-            <p className="text-lg leading-relaxed text-gray-700" dangerouslySetInnerHTML={{ __html: seoText.blocks.porqueElegirnos.text }}></p>
-            <ul className="list-disc list-inside text-lg text-gray-600 mt-4 space-y-2">
-              <li>Estrategias personalizadas para tu nicho de mercado.</li>
-              <li>Expertos certificados con experiencia probada.</li>
-              <li>Informes transparentes y seguimiento constante.</li>
-              <li>Soporte técnico y asesoramiento continuo.</li>
-            </ul>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={seoText.blocks.porqueElegirnos.image} alt="Resultados comprobados" className="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full" />
-          </div>
-        </section>
-
-        {/* Sección Contacto */}
-        <section id="contacto" className="bg-white p-8 rounded-lg shadow-md mb-12 flex flex-col md:flex-row-reverse items-center space-y-6 md:space-y-0 md:space-x-8 transform transition duration-500 hover:scale-[1.01]">
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-extrabold text-red-700 mb-4">{seoText.blocks.contacto.title}</h2>
-            <p className="text-lg leading-relaxed text-gray-700" dangerouslySetInnerHTML={{ __html: seoText.blocks.contacto.text }}></p>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={seoText.blocks.contacto.image} alt="Formulario de contacto" className="rounded-lg shadow-xl w-full h-auto max-w-sm md:max-w-full" />
-          </div>
-        </section>
-
-        {/* Otros bloques (conservados del HTML original pero sin contenido extendido) */}
-        <section id="blog" className="bg-white p-6 rounded-lg shadow-md mb-6 transform transition duration-300 hover:scale-[1.01]"><h2 className="text-3xl font-bold text-gray-800 mb-3">Blog</h2><p className="text-lg text-gray-600">Lee nuestros artículos sobre las últimas tendencias en diseño web y SEO.</p><a href="#" className="text-blue-600 hover:underline mt-2 inline-block">Visita nuestro blog</a></section>
-        <section id="casos-exito" className="bg-white p-6 rounded-lg shadow-md mb-6 transform transition duration-300 hover:scale-[1.01]"><h2 className="text-3xl font-bold text-gray-800 mb-3">Casos de Éxito</h2><p className="text-lg text-gray-600">Descubre cómo hemos ayudado a otros negocios a mejorar su posicionamiento en línea.</p><a href="#" className="text-blue-600 hover:underline mt-2 inline-block">Ver casos de éxito</a></section>
-        <section id="testimonios" className="bg-white p-6 rounded-lg shadow-md mb-6 transform transition duration-300 hover:scale-[1.01]"><h2 className="text-3xl font-bold text-gray-800 mb-3">Testimonios</h2><p className="text-lg text-gray-600">Lo que nuestros clientes dicen sobre nosotros.</p><a href="#" className="text-blue-600 hover:underline mt-2 inline-block">Leer testimonios</a></section>
-        <section id="faq" className="bg-white p-6 rounded-lg shadow-md mb-6 transform transition duration-300 hover:scale-[1.01]"><h2 className="text-3xl font-bold text-gray-800 mb-3">Preguntas Frecuentes</h2><p className="text-lg text-gray-600">Resolvemos tus dudas sobre nuestros servicios.</p><a href="#" className="text-blue-600 hover:underline mt-2 inline-block">Ver preguntas frecuentes</a></section>
-        <section id="recursos" className="bg-white p-6 rounded-lg shadow-md mb-6 transform transition duration-300 hover:scale-[1.01]"><h2 className="text-3xl font-bold text-gray-800 mb-3">Recursos</h2><p className="text-lg text-gray-600">Accede a guías, plantillas y herramientas útiles para mejorar tu presencia en línea.</p><a href="#" className="text-blue-600 hover:underline mt-2 inline-block">Explorar recursos</a></section>
-
-      </main>
-      <Footer />
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 p-8 mt-12 rounded-t-lg shadow-inner">
+    <div class="container mx-auto text-center">
+      <p class="mb-4 text-sm">&copy; 2025 TuNegocioDigital. Todos los derechos reservados.</p>
+      <nav class="mb-6">
+        <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sm">
+          <li><a href="#servicios" class="hover:text-white transition duration-300 ease-in-out">Servicios</a></li>
+          <li><a href="#sobre-nosotros" class="hover:text-white transition duration-300 ease-in-out">Sobre Nosotros</a></li>
+          <li><a href="#contacto" class="hover:text-white transition duration-300 ease-in-out">Contacto</a></li>
+          <li><a href="#blog" class="hover:text-white transition duration-300 ease-in-out">Blog</a></li>
+          <li><a href="#casos-exito" class="hover:text-white transition duration-300 ease-in-out">Casos de Éxito</a></li>
+          <li><a href="#testimonios" class="hover:text-white transition duration-300 ease-in-out">Testimonios</a></li>
+          <li><a href="#faq" class="hover:text-white transition duration-300 ease-in-out">FAQ</a></li>
+          <li><a href="#recursos" class="hover:text-white transition duration-300 ease-in-out">Recursos</a></li>
+        </ul>
+      </nav>
+      <div class="flex justify-center space-x-6 mt-4">
+        <!-- Iconos de redes sociales (placeholders SVG) -->
+        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.37-.83.5-1.75.85-2.72 1.05C18.3 4.2 17.22 3.5 16 3.5c-2.34 0-4.24 1.9-4.24 4.24 0 .33.04.65.11.96C8.07 9.17 5.06 7.5 3.09 4.88c-.34.58-.54 1.25-.54 1.98 0 1.38.7 2.6 1.77 3.32-.66-.02-1.28-.2-1.82-.5V12c0 2.07 1.48 3.79 3.44 4.18-.36.1-.73.15-1.12.15-.27 0-.53-.02-.79-.08.55 1.7 2.14 2.93 4.02 2.96C13.44 18.2 15 19 16.7 19c1.7 0 3.12-.9 3.89-2.28.16.02.33.04.5.04.49 0 .97-.07 1.43-.2-.59.47-1.36.85-2.18 1.07z"></path></svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14H8V10h2v6zm4 0h-2V10h2v6zm-2-7c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-8 19H7v-7h4v7zm6 0h-4v-7h4v7zm-8-9H7V7h4v3zm6 0h-4V7h4v3z"></path></svg>
+        </a>
+      </div>
     </div>
-  );
-};
+  </footer>
 
-export default App;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carouselTrack = document.getElementById('carousel-track');
+      const images = carouselTrack.querySelectorAll('img');
+      const carouselDotsContainer = document.getElementById('carousel-dots');
+      let currentIndex = 0;
+      let intervalId;
+
+      // Crear los puntos del carrusel
+      images.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) {
+          dot.classList.add('active');
+        }
+        dot.addEventListener('click', () => {
+          clearInterval(intervalId); // Limpiar el intervalo al hacer click
+          currentIndex = index;
+          updateCarousel();
+          startCarousel(); // Reiniciar el carrusel
+        });
+        carouselDotsContainer.appendChild(dot);
+      });
+
+      const dots = carouselDotsContainer.querySelectorAll('.carousel-dot');
+
+      // Función para actualizar el carrusel
+      const updateCarousel = () => {
+        carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      };
+
+      // Función para avanzar el carrusel automáticamente
+      const nextSlide = () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateCarousel();
+      };
+
+      // Función para iniciar el carrusel automático
+      const startCarousel = () => {
+        intervalId = setInterval(nextSlide, 3000); // Cambia cada 3 segundos
+      };
+
+      // Iniciar el carrusel cuando la página carga
+      startCarousel();
+    });
+  </script>
+</body>
+</html>
